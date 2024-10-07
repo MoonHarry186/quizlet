@@ -9,20 +9,20 @@ const userSchema = new Schema(
           type: String,
           required: true,
         },
-        password: {
-          type: String,
-          required: true,
-        },
+        // password: {
+        //   type: String,
+        //   required: true,
+        // },
         avatar: String, // Optional avatar field (e.g., image URL)
         email: {
           type: String,
           required: true,
           unique: true, // Ensure that emails are unique
         },
-        plan: {
-          type: Schema.Types.ObjectId,
-          ref: "Plan", // Reference to the "Plan" model
-        },
+        // plan: {
+        //   type: Schema.Types.ObjectId,
+        //   ref: "Plan", // Reference to the "Plan" model
+        // },
       },
       {
         timestamps: true, // Automatically adds createdAt and updatedAt fields

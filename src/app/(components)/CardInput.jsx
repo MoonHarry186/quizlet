@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CardInput = ({ index, handleChange, handleUploadImage }) => {
+const CardInput = ({ index, handleChange }) => {
   return (
       <div className="card">
         <label htmlFor={`term-${index}`}>Term</label>
@@ -36,7 +36,7 @@ const CardInput = ({ index, handleChange, handleUploadImage }) => {
           type="file" // Assuming image is a URL or base64 string; adjust if necessary
           name={`image-${index}`}
           placeholder="Enter Image URL"
-          onChange={(e) => handleUploadImage(e)}
+          onChange={handleChange("image")}
         />
       </div>
   )

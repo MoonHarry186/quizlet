@@ -1,8 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useContext } from "react";
+import { GlobalContext } from "../(context)/GlobalState";
+import { loggedUser } from "../(utils)/getCookie";
 import CardInput from "../(components)/CardInput";
 const AddCourse = () => {
+
+console.log(loggedUser);
+  
+
   const [cardsInput, setCardsInput] = useState([0]); // Start with one card
   const [courseInfo, setCourseInfo] = useState({
     name: "",
@@ -29,8 +36,7 @@ const AddCourse = () => {
         
         const result = await res.json();
         if (res.ok) {
-          console.log("Image uploaded:", result);
-          setImageUrl(result.url); // S3 image URL
+          return result.url;
         } else {
           console.error("Upload error:", result.error);
         }
@@ -72,7 +78,7 @@ const AddCourse = () => {
       const courseData = {
         ...courseInfo,
         cards: cardIds, // Assign the card IDs to the course's cards field
-        author: "Harry Moon"
+        author: loggedUser
       };
       console.log('courseData', courseData);
       
@@ -111,9 +117,13 @@ const AddCourse = () => {
   };
 
   // Handling card input
-  const handleCardChange = (index) => (field) => (e) => {
+  const handleCardChange = (index) => (field) => async (e) => {
+    if (field === "image") {
+      var image = await uploadImage(e);
+    }
+
     const updatedCards = [...courseInfo.cards];
-    const value = e.target.value;
+    const value = image ? image : e.target.value;
 
     // Ensure the cards array has an object for this index
     if (!updatedCards[index]) {
@@ -122,6 +132,8 @@ const AddCourse = () => {
 
     updatedCards[index][field] = value;
     setCourseInfo({ ...courseInfo, cards: updatedCards });
+    console.log(courseInfo);
+    
   };
 
   return (
@@ -150,7 +162,6 @@ const AddCourse = () => {
               key={index}
               index={index}
               handleChange={handleCardChange(index)}
-              handleUploadImage={uploadImage}
             />
           );
         })}

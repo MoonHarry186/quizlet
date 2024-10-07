@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 
 const cardSchema = new Schema(
     {
-        term: {
+        term: { 
           type: String,
           required: true,
         },
