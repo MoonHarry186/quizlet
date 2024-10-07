@@ -19,11 +19,11 @@ const courseScheama = new Schema(
             ref: "Card", // Refers to the "Card" model
           },
         ],
-        author: {
-          type: Schema.Types.ObjectId,
-          ref: "User", // Refers to the "User" model
-          required: true,
-        },
+        // author: {
+        //   type: Schema.Types.ObjectId,
+        //   ref: "User", // Refers to the "User" model
+        //   required: true,
+        // },
       },
       {
         timestamps: true, // Adds createdAt and updatedAt fields

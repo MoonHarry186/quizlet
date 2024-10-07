@@ -14,10 +14,13 @@ export async function GET() {
 
 // POST: Create a new course
 export async function POST(req) {
+  console.log('hehe');
+  
   try {
     const body = await req.json();
     const courseData = body.formData; // Adjust this based on your request body structure
-
+    console.log('courseData', courseData);
+    
     const newCourse = await Course.create(courseData);
     return NextResponse.json({ message: "Course Created", course: newCourse }, { status: 201 });
   } catch (err) {

@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.665.0",
+    "@aws-sdk/lib-storage": "^3.665.0",
+    "formidable": "^3.5.1",
     "mongo": "^0.1.0",
     "mongoose": "^8.7.0",
     "next": "14.2.14",
