@@ -11,6 +11,7 @@ const AddCourse = () => {
     author: "",
     dateCreated: "",
   });
+  const [file, setFile] = useState(null)
   const [imageUrl, setImageUrl] = useState(null);
 
   const uploadImage = async (e) => {
