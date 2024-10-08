@@ -5,7 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { useContext } from "react";
 import { GlobalContext } from "../(context)/GlobalState";
 const Login = () => {
-
+  const {login} = useContext(GlobalContext)
   return (
     <>
       <div className="max-w-screen-xl mx-auto">

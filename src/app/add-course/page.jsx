@@ -6,10 +6,6 @@ import { GlobalContext } from "../(context)/GlobalState";
 import { loggedUser } from "../(utils)/getCookie";
 import CardInput from "../(components)/CardInput";
 const AddCourse = () => {
-
-console.log(loggedUser);
-  
-
   const [cardsInput, setCardsInput] = useState([0]); // Start with one card
   const [courseInfo, setCourseInfo] = useState({
     name: "",
