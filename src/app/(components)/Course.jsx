@@ -1,43 +1,34 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
-// import { useParams } from "react-router-dom";
-const Course = () => {
-  const [cardsList, setCardsList] = useState([]);
-//   const {id} = useParams()
-  const [currentCardIndex, setCurrentCardIndex] = useState(0); // Track the current card index
-
-  const nextCard = () => {
-    if (currentCardIndex < cardsList.length - 1) {
-      setCurrentCardIndex((prevIndex) => prevIndex + 1);
-    }
-  };
-
-  const prevCard = () => {
-    if (currentCardIndex > 0) {
-      setCurrentCardIndex((prevIndex) => prevIndex - 1);
-    }
-  };
-//   useEffect(() => {
-//     fetch(`http://localhost:3000/api/Courses`)
-//       .then(res => {
-//         if (!res.ok) {
-//           throw new Error('Network response was not ok');
-//         }
-//         return res.json(); // Return the promise from res.json()
-//       })
-//       .then(data => {
-//         console.log(data); // Log the fetched data
-//       })
-//       .catch(error => {
-//         console.error("Error fetching data:", error);
-//       });
-//   }, []);
-  const progress = (currentCardIndex + 1) / cardsList.length * 100;
+const Course = ({ courseName, cards, description, courseAuthor }) => {
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/Users/${courseAuthor}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setUser(data.user);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
   return (
-    <>
-      Course
-    </>
+    <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        {courseName}
+      </h5>
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        {cards.length}
+      </h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">{description}</p>
+      <p>{user.name}</p>
+      <img src={user.avatar} alt="User Avatar" />
+    </div>
   );
 };
 

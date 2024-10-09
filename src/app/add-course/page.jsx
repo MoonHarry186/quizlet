@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "../(context)/GlobalState";
-import { loggedUser } from "../(utils)/getCookie";
 import CardInput from "../(components)/CardInput";
+import Cookies from "js-cookie";
 const AddCourse = () => {
   const [cardsInput, setCardsInput] = useState([0]); // Start with one card
   const [courseInfo, setCourseInfo] = useState({
@@ -74,7 +74,7 @@ const AddCourse = () => {
       const courseData = {
         ...courseInfo,
         cards: cardIds, // Assign the card IDs to the course's cards field
-        author: loggedUser
+        author: Cookies.get("userId")
       };
       console.log('courseData', courseData);
       

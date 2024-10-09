@@ -25,7 +25,6 @@ const Login = () => {
             });
 
             const userResult = await userRespon.json();
-
             // Store user _id
             login(userResult.users._id && true);
 
