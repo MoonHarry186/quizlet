@@ -25,14 +25,11 @@ const Login = () => {
             });
 
             const userResult = await userRespon.json();
+
             // Store user _id
             login(userResult.users._id && true);
 
-            if (!Cookies.get('userId')) {
-              Cookies.set('userId', userResult.users._id, { expires: 7 }); // Lưu cookie trong 7 ngày
-            }
-            
-
+            Cookies.set('userId', userResult.users._id, { expires: 7 }); // Lưu cookie trong 7 ngày
           }}
           onError={() => {
             console.log("Login Failed");

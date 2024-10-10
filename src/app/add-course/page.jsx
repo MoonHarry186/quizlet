@@ -109,7 +109,6 @@ const AddCourse = () => {
   const handleChange = (input) => (e) => {
     e.preventDefault();
     setCourseInfo({ ...courseInfo, [input]: e.target.value });
-    console.log(courseInfo);
   };
 
   // Handling card input
@@ -128,7 +127,6 @@ const AddCourse = () => {
 
     updatedCards[index][field] = value;
     setCourseInfo({ ...courseInfo, cards: updatedCards });
-    console.log(courseInfo);
     
   };
 

@@ -9,7 +9,6 @@ import { IoSettings } from "react-icons/io5";
 
 const Header = () => {
   const {login} = useContext(GlobalContext)
-  console.log(Cookies.get("userId") )
   return (
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
