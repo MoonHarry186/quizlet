@@ -1,20 +1,11 @@
-import Main from "./(components)/Main";
-
-
-export async function getServerSideProps() {
-  // Fetch data from an API or database
-  const res = await fetch(`http://localhost:3000/api/Courses/`);
+import Home from "./(components)/Home";
+export default async function HomePage() {
+  const res = await fetch('http://localhost:3000/api/Courses');
   const data = await res.json();
-
-  // Pass data to the page via props
-  return { props: { data } };
-}
-
-
-export default async function HomePage({data}) {
+  const isLogin = true;
   return (
     <>
-      <Main data={data}/>
+      <Home data={data.courses}/>
     </>
   );
 }

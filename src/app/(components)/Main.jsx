@@ -6,11 +6,11 @@ import Cookies from "js-cookie";
 import { useContext } from 'react';
 import { GlobalContext } from '../(context)/GlobalState';
 
-const Main = () => {
+const Main = ({data}) => {
   const {isLogin} = useContext(GlobalContext)
   return (
     <>
-      {Cookies.get('userId') ? <Home /> : <Login />}
+      {Cookies.get('userId') ? <Home data={data}/> : <Login />}
     </>
   )
 }

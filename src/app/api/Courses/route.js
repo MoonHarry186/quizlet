@@ -1,10 +1,11 @@
+import User from "@/app/(models)/User";
 import Course from "@/app/(models)/Course"; // Adjust the import path as necessary
 import { NextResponse } from "next/server";
 
 // GET: Retrieve all courses
 export async function GET() {
   try {
-    const courses = await Course.find(); // Populating the referenced fields
+    const courses = await Course.find().populate('author'); // Populating the referenced fields
     return NextResponse.json({ courses }, { status: 200 });
   } catch (err) {
     console.log(err);
